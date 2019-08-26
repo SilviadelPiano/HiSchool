@@ -3,5 +3,6 @@ language: ruby
 rvm:
   - 2.4.1
 
-script: rails server
+script: 
+  - bundle exec rake test_with_coveralls
 

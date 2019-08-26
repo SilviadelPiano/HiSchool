@@ -47,6 +47,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'coveralls', :require => false # to use Coveralls.io for test coverage
+  gem 'simplecov', :require => false
+  #gem 'jasmine-rails'               # to test JavaScript/CoffeeScript, not sure if it will be used
 end
 
 group :development do
@@ -56,6 +59,17 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions
+  gem 'database_cleaner'               # to clean Cucumber's test database between runs
+  gem 'capybara'                       # lets Cucumber pretend to be a web browser
+  gem 'launchy'                        # a useful debugging aid for user stories
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
