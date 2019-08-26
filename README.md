@@ -1,5 +1,7 @@
 # README
 
+[![Build Status](https://travis-ci.org/<SilviadelPiano>/<HiSchool>.svg?branch=master)](https://travis-ci.org/<SilviadelPiano>/<HiSchool>) [![Coverage Status](https://coveralls.io/repos/github/<SilviadelPiano>/<HiSchool>/badge.svg?branch=master)](https://coveralls.io/github/<SilviadelPiano>/<HiSchool>?branch=master)
+
 This will be done in the future
 
 This README would normally document whatever steps are necessary to get the
