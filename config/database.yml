@@ -22,4 +22,5 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql       # questo potrebbe non andare bene per il deploy su heroku
   database: db/production.sqlite3

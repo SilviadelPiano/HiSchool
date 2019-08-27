@@ -32,6 +32,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Security help
+gem 'devise'
+#gem 'canard'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -59,9 +63,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Security testing 
+  gem 'brakeman'
+  gem 'guard-brakeman'
 end
 
 group :test do
+  gem 'gemsurance'                    # to check gems' security
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'cucumber-rails', :require => false
