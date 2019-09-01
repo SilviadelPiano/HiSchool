@@ -11,5 +11,37 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *= require_self
  */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+ #main-container{
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 10px;
+ }
+
+ .navbar-default{
+    padding-top:10px; 
+    padding-bottom: 10px;
+    background-color: #d6ffe1;
+ }
+
+ #main-container .navbar-default {
+    min-height: 100px;
+ }
+
+ .container-fluid{
+    padding-top: 110px; 
+    padding-bottom: 80px;
+ }
+
+ @media screen and (max-width: 768px){
+
+    *[class*='col-xs']{
+      padding:50px;
+    }
+  
+  }

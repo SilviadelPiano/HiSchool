@@ -21,6 +21,9 @@ gem 'uglifier', '>= 1.3.0'
 # Use HAML to render the views
 gem 'haml'
 
+# Bootstrap 3 for styling
+gem 'bootstrap-sass'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -65,7 +68,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Security testing 
   gem 'brakeman'
-  gem 'guard-brakeman'
+  #gem 'guard-brakeman'
 end
 
 group :test do
