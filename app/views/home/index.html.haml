@@ -10,9 +10,11 @@
           = image_tag("HiSchoolLogo.png")
         %ul.nav.navbar-nav.navbar-right
           %li
-            %button#login-btn.btn.btn-lg.btn-success.navbar-btn{:href => "#"} Login
+            %a{:href => "users/sign_in"}
+              %button#login-btn.btn.btn-lg.btn-success.navbar-btn Login
           %li
-            %button#sign-up-btn.btn.btn-lg.btn-success.navbar-btn{:href => "#"} Sign Up
+            %a{:href => "users/sign_up"}
+              %button.btn.btn-lg.btn-success.navbar-btn Sign Up
     .container-fluid
       .row
         .col-xs-12.col-md-4.center-block

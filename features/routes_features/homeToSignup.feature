@@ -4,5 +4,7 @@ Feature: Go to the "SignUp" page from the "Home" page
 
         Scenario: 
             Given I am on the home page
-            When I press Sign Up
-            Then I shoul be on the sign-up page
+            When I follow Sign Up
+            Then I should be on the sign-up page
+
+        # TODO: Add perhaps failing Scenario when doing the Error story
