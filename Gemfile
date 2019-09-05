@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Security help
 gem 'devise'
-#gem 'canard'
+gem 'canard', '~> 0.5.0.pre'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

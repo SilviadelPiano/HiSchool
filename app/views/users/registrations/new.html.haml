@@ -7,6 +7,49 @@
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "devise/shared/error_messages", resource: resource
     .field
+      = f.label :nome
+      %br/
+      = f.text_field :name, autofocus: true, autocomplete: "nome"
+    .field
+      =f.label :cognome
+      %br/
+      = f.text_field :surname, autofocus: true, autocomplete: "cognome"
+    .field
+      = f.label :codice_fiscale
+      %br/
+      = f.text_field :CF, autofocus: true, autocomplete: "codice fiscale"
+    .field
+      = f.label :data_di_nascita
+      %br/
+      = f.date_select :birth_date, autofocus: true
+    .field
+      = f.label :città_di_nascita
+      %br/
+      = f.text_field :birth_place, autofocus: true, autocomplete: "città di nascita"
+    .field
+      = f.label :sesso
+      %br/
+      = f.radio_button :sex, :"M"
+      M
+      = f.radio_button :sex, :"F"
+      F
+    .field
+      = f.label :sei_un
+      %br/
+      //= f.collection_select :role, User::ROLES, :to_s, :humanize
+      - for role in User::ROLES
+        = radio_button_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}
+        - if role == "parent"
+          = f.label :genitore
+        - else
+          - if role == "student"
+            = f.label :studente
+          - else 
+            = f.label :insegnante
+        %br/
+      = hidden_field_tag "user[roles][]", ""
+
+    .field
       = f.label :email
       %br/
       = f.email_field :email, autofocus: true, autocomplete: "email"
