@@ -10,7 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190903130958) do
+ActiveRecord::Schema.define(version: 20190905120602) do
+
+  create_table "children", force: :cascade do |t|
+    t.integer "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_children_on_parent_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "schoolClass_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schoolClass_id"], name: "index_memberships_on_schoolClass_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "link"
+    t.date "deadline"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "posts_students", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "post_id"
+    t.date "submitted_on"
+    t.index ["post_id"], name: "index_posts_students_on_post_id"
+    t.index ["user_id"], name: "index_posts_students_on_user_id"
+  end
+
+  create_table "school_classes", force: :cascade do |t|
+    t.string "name"
+    t.integer "school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_school_classes_on_school_id"
+  end
+
+  create_table "school_classes_teachers", id: false, force: :cascade do |t|
+    t.bigint "school_class_id"
+    t.bigint "teacher_id"
+    t.string "subject"
+    t.index ["school_class_id"], name: "index_school_classes_teachers_on_school_class_id"
+    t.index ["teacher_id"], name: "index_school_classes_teachers_on_teacher_id"
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

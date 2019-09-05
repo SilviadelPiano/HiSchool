@@ -4,6 +4,11 @@ class User < ApplicationRecord
 
   acts_as_user :roles => [ :parent, :student, :teacher ]
   
+  #belongs_to :school_class, :through => memberships this dosn't work for some reason
+  has_many :posts
+  has_and_belongs_to_many :school_classes
+  has_many :children, class_name: "User", foreign_key: "parent_id"
+  belongs_to :parent, class_name: "User", optional: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
