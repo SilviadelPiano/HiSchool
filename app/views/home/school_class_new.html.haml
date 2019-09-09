@@ -1,0 +1,45 @@
+- content_for :left_col do
+  %h3 Hai quasi finito! 
+  %h4 Compila gli ultimi campi per completare la registrazione.
+
+- content_for :center_col do 
+  = form_with(url: "/home/school_class_new", method: "post") do 
+    .field.form-group
+      = label_tag("Classe")
+      %br/
+      %input{ :name => 'school_class_new_class', :autofocus => true, autocomplete: "classe", :class => "form-control", :required => "", :maxlength => "30" }
+    .field.form-group
+      = label_tag("Scuola")
+      %br/
+      %input{ :name => 'school_class_new_school', :autofocus => true, autocomplete: "scuola", :class => "form-control", :required => "", :maxlength => "30" }
+    - if @user
+      - if @user.roles_mask == 4
+        - content_for :left_col do 
+          %h4 Inserisci la classe, la scuola e la materia che insegni.
+          %h3 Attenzione! 
+          %h4 Se inserirai una classe non valida per la scuola verrai rimandato su questa pagina
+        .field.form-group
+          = label_tag("Materia")
+          %br/
+          %input{ :name => 'school_class_new_subject', :autofocus => true, autocomplete: "materia", :class => "form-control", :maxlength => "30" }
+      - elsif @user.roles_mask == 1
+        - content_for :left_col do 
+          %h3 Attenzione! 
+          %h4 Se inserirai una classe non valida per la scuola, oppure un codice fiscale non valido verrai rimandato su questa pagina
+        .field.form-group
+          = label_tag("Genitore di (inserisci il codice fiscale di tuo figlio):")
+          %br/
+          %input{ :name => 'school_class_new_son', :autofocus => true, autocomplete: "figlio", :class => "form-control", :maxlength => "30" } 
+      - else @user.roles_mask == 2
+        - content_for :left_col do 
+          %h4 Inserisci la classe e la scuola che frequenti. 
+          %h3 Attenzione! 
+          %h4 Se inserirai una classe non valida per la scuola verrai rimandato su questa pagina 
+    .actions
+      = submit_tag("Registra la tua classe", :class => 'btn btn-lg btn-success')
+    %br/
+    %br/
+
+
+
+

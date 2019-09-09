@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190905120602) do
+ActiveRecord::Schema.define(version: 20190906185236) do
 
   create_table "children", force: :cascade do |t|
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "child_id"
+    t.index ["child_id"], name: "index_children_on_child_id"
     t.index ["parent_id"], name: "index_children_on_parent_id"
   end
 

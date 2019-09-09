@@ -53,16 +53,6 @@ When /^(?:|I )press (.+)$/ do |button|
   click_button(button)
 end
 
-Then /^(?:|I )should be on (.+)$/ do |page_name|
-  sleep 10
-  current_path = URI.parse(current_url).path
-  if current_path.respond_to? :should
-    current_path.should == path_to(page_name)
-  else
-    assert_equal path_to(page_name), current_path
-  end
-end
-
 When /^(?:|I )follow (.+)$/ do |link|
   click_link(link)
 end
@@ -77,15 +67,23 @@ end
 
 # Use this to fill in an entire form with data from a table. Example:
 #
-#   When I fill in the following:
-#     | Account Number | 5002       |
-#     | Expiry date    | 2009-11-01 |
-#     | Note           | Nice guy   |
-#     | Wants Email?   |            |
+#When I fill in the following:
+ # | Account Number | 5002       |
+  #| Expiry date    | 2009-11-01 |
+  #| Note           | Nice guy   |
+  #| Wants Email?   |            |
 #
 # TODO: Add support for checkbox, select or option
 # based on naming conventions.
-#
+# 
+
+When /^(?:|I ) fill out the form correctly like this:$/ do |fields|
+  fields.rows_hash.each do |name, value|
+    When %{I fill in "#{name}" with "#{value}"}
+  end
+  find_field("sex").should be_checked
+end
+
 When /^(?:|I )fill in the following:$/ do |fields|
   fields.rows_hash.each do |name, value|
     When %{I fill in "#{name}" with "#{value}"}
@@ -94,6 +92,16 @@ end
 
 When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
   select(value, :from => field)
+end
+
+Then /^(?:|I )should be on (.+)$/ do |page_name|
+  sleep 10
+  current_path = URI.parse(current_url).path
+  if current_path.respond_to? :should
+    current_path.should == path_to(page_name)
+  else
+    assert_equal path_to(page_name), current_path
+  end
 end
 
 When /^(?:|I )check "([^"]*)"$/ do |field|

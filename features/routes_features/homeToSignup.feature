@@ -4,7 +4,7 @@ Feature: Go to the "SignUp" page from the "Home" page
 
         Scenario: 
             Given I am on the home page
-            When I follow Sign Up
+            When I follow Registrati
             Then I should be on the sign-up page
 
         # TODO: Add perhaps failing Scenario when doing the Error story

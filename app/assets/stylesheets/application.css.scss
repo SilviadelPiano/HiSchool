@@ -16,6 +16,13 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ label{
+   font-size: medium;
+ }
+
+ select{
+   background-color: #d6ffe1;
+ }
 
  #main-container{
     max-width: 1200px; 

@@ -2,68 +2,82 @@
   %li
     %a{:href => "/"}
       %button.btn.btn-lg.btn-success.navbar-btn Home
+
+- content_for :left_col do 
+  %h3 Benvenuto nella pagina di registrazione!
+  %br/
+  %h4 Per cominciare ad usufruire dei nostri servizi, ti preghiamo di compilare tutti i campi del questionario a lato, facendo attenzione a rispettare le seguenti condizioni:
+  %br/
+  %h4 - email: deve essere un'email di Google, altrimenti non potrai usare i servizi fondamentali della piattaforma, che poggiano su Google Drive
+  %br/
+  %h4 - password: deve essere lunga almeno 8 caratteri, contenere una lettera maiuscola, un simbolo e un numero
+       
 - content_for :center_col do
-  %h2 Sign Up
+  %h1 Registrazione:
+  %br/
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "devise/shared/error_messages", resource: resource
-    .field
+    .field.form-group
       = f.label :nome
       %br/
-      = f.text_field :name, autofocus: true, autocomplete: "nome"
-    .field
+      = f.text_field :name, autofocus: true, autocomplete: "nome", :class => 'form-control'
+    .field.form-group
       =f.label :cognome
       %br/
-      = f.text_field :surname, autofocus: true, autocomplete: "cognome"
-    .field
+      = f.text_field :surname, autofocus: true, autocomplete: "cognome", :class => 'form-control'
+    .field.form-group
       = f.label :codice_fiscale
       %br/
-      = f.text_field :CF, autofocus: true, autocomplete: "codice fiscale"
-    .field
+      = f.text_field :CF, autofocus: true, autocomplete: "codice fiscale", :class => 'form-control'
+    .field.form-group
       = f.label :data_di_nascita
       %br/
-      = f.date_select :birth_date, autofocus: true
-    .field
+      = f.date_select :birth_date, autofocus: true, :start_year => 1920
+    .field.form-group
       = f.label :città_di_nascita
       %br/
-      = f.text_field :birth_place, autofocus: true, autocomplete: "città di nascita"
-    .field
+      = f.text_field :birth_place, autofocus: true, autocomplete: "città di nascita", :class => 'form-control'
+    .field.form-group
       = f.label :sesso
       %br/
       = f.radio_button :sex, :"M"
       M
       = f.radio_button :sex, :"F"
       F
-    .field
+    .field.form-group
       = f.label :sei_un
       %br/
       //= f.collection_select :role, User::ROLES, :to_s, :humanize
       - for role in User::ROLES
         = radio_button_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}
-        - if role == "parent"
-          = f.label :genitore
+        - if role == "parent" # è 4
+          Genitore
         - else
-          - if role == "student"
-            = f.label :studente
-          - else 
-            = f.label :insegnante
+          - if role == "student" # è 2
+            Studente
+          - else # è 1
+            Insegnante 
         %br/
       = hidden_field_tag "user[roles][]", ""
 
-    .field
+    .field.form-group
       = f.label :email
       %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email"
-    .field
+      = f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control'
+    .field.form-group
       = f.label :password
       - if @minimum_password_length
         %em
           (#{@minimum_password_length} characters minimum)
       %br/
-      = f.password_field :password, autocomplete: "new-password"
-    .field
-      = f.label :password_confirmation
+      = f.password_field :password, autocomplete: "new-password", :class => 'form-control'
+    .field.form-group
+      = f.label :conferma_password
       %br/
-      = f.password_field :password_confirmation, autocomplete: "new-password"
+      = f.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control'
     .actions
-      = f.submit "Sign up"
-  = render "users/shared/links"
+      = f.submit "Registrati", :class => 'btn btn-lg btn-success'
+    %br/  
+    %br/
+    %br/
+  //= render "users/shared/links". I br sopra sono bruttissimi ma era il modo più rapido di farlo
