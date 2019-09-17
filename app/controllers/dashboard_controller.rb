@@ -14,6 +14,9 @@ class DashboardController < ApplicationController
             @son = User.find(son_id)
             render 'parent_dashboard'
         elsif @c_user.roles_mask == 2
+            class_and_school = Membership.find_by(user_id: @c_user.id).schoolClass_id
+            @school_class = SchoolClass.find(class_and_school)
+            @school = School.find(@school_class.school_id)
             render 'student_dashboard'
         else 
             render 'teacher_dashboard'

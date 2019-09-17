@@ -1,3 +1,27 @@
-= render 'common'
+- content_for :nav_top do 
+  %li
+    %a{:href => "#"}  
+      %button.btn.btn-lg.btn-success.navbar-btn Compiti Consegnati
+  %li
+    %a{:href => "/"}
+      %button.btn.btn-lg.btn-success.navbar-btn Nuovo Post
+ 
+- content_for :left_col do 
+  %h2 Foto da Google Account 
+  
+= render partial: "common", locals: {user: @c_user}
 
-%h2 teacher_dashboard
+- content_for :left_col do 
+  %h3 Materiale:
+  Qua bisognerà mettere l'elenco dei file caricati su Google Drive
+
+- content_for :center_col do 
+  %h2 Teacher dashboard
+
+- content_for :nav_bottom do 
+  %li
+    %a{:href => "#"}  
+      %button.btn.btn-lg.btn-success.navbar-btn Aggiungi File
+  %li
+    %a{:href => "#"}  
+      %button.btn.btn-lg.btn-success.navbar-btn Rimuovi/Download File

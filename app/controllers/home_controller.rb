@@ -23,13 +23,13 @@ class HomeController < ApplicationController
       if !c_id.present? 
         render :action => :school_class_new
       end
-      Membership.create({:user_id => u_id, :schoolClass_id => c_id.school_id})
+      Membership.create({:user_id => u_id, :schoolClass_id => c_id.id})
       redirect_to '/dashboard'
     elsif u_role == 4
       if !c_id.present? 
         render :action => :school_class_new
       end
-      SchoolClassTeacher.create({:school_class_id => c_id.school_id, :teacher_id => u_id, :subject => params[:school_class_new_subject]})
+      SchoolClassTeacher.create({:school_class_id => c_id.id, :teacher_id => u_id, :subject => params[:school_class_new_subject]})
       redirect_to '/dashboard'
     else 
       son_cf = params[:school_class_new_son]

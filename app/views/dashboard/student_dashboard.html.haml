@@ -1,3 +1,19 @@
-= render 'common'
+- content_for :nav_top do 
+  %li
+    %a{:href => "#"}  
+      %button.btn.btn-lg.btn-success.navbar-btn Materie
 
-%h2 Student dashboard
+- content_for :left_col do 
+  %h2 Qui ci sarà la foto dal Google Account
+
+= render partial: "common", locals: {user: @c_user}
+
+- content_for :left_col do 
+  = label_tag 'class', "Classe: "
+  = label_tag 'u_class', "#{@school_class.name}", :class => "my-label"
+  %br/
+  = label_tag 'school', "Scuola: "
+  = label_tag 'u_school', "#{@school.name}", :class => "my-label"
+
+- content_for :center_col do 
+  %h2 Student dashboard
