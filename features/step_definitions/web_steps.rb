@@ -45,6 +45,31 @@ Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
+Given /^a valid user$/ do
+  @user = User.create!({
+             :name => "Silvia",
+             :surname => "del Piano",
+             :roles_mask => "2",
+             :CF => "DLPSLV97L67H501J",
+             :birth_place => "Roma",
+             :sex => "F",
+             :email => "silvia.delpiano27@gmail.com",
+             :password => "*YukiShiro27",
+             :password_confirmation => "*YukiShiro27"
+           })
+  @school = School.create!({
+             :name => "Peano"
+           })
+  @schoolClass = SchoolClass.create!({
+            :name => "2LS",
+            :school_id => "1"
+          })
+  @member = Membership.create!({
+             :user_id => @user.id,
+             :schoolClass_id => "1"
+           })
+end
+
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
