@@ -6,7 +6,6 @@ Feature: SignUp
         Scenario: 
             Given I am on the sign-up page
             When I fill in the following:
-
                 | nome              | Silvia                      |
                 | cognome           | del Piano                   |
                 | codice fiscale    | DLPSLV97L67H501J            |
@@ -14,5 +13,7 @@ Feature: SignUp
                 | email             | silvia.delpiano27@gmail.com |
                 | password          | *YukiShiro27                |
                 | conferma password | *YukiShiro27                |
-                And I press the button Registrati
-            Then I should be on the new-class page
+                And I click radio button user_sex_f
+                And I click radio button user_roles_student_student
+                And I press Registrati
+            Then I should see Hai quasi finito!

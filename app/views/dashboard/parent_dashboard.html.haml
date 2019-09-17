@@ -1,0 +1,8 @@
+= render partial: "common", locals: {user: @c_user}
+
+- content_for :left_col do 
+  = label_tag 'son_name', "Genitore di: "
+  = label_tag 'u_son_name', "#{@son.name}", :class => "my-label"
+  = label_tag 'u_son_surname', "#{@son.surname}", :class => "my-label"
+- content_for :center_col do
+  %h2 Parent Dashboards

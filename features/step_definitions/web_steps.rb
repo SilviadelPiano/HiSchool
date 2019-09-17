@@ -53,6 +53,10 @@ When /^(?:|I )press (.+)$/ do |button|
   click_button(button)
 end
 
+When /^(?:|I )click radio button (.+)$/ do |radio_button|
+  choose(radio_button)
+end
+
 When /^(?:|I )follow (.+)$/ do |link|
   click_link(link)
 end
@@ -77,16 +81,17 @@ end
 # based on naming conventions.
 # 
 
-When /^(?:|I ) fill out the form correctly like this:$/ do |fields|
-  fields.rows_hash.each do |name, value|
-    When %{I fill in "#{name}" with "#{value}"}
+When /^I fill out the form correctly$/ do |table|
+  table.rows_hash.each do |name, value|
+    %{I fill in "#{name}" with "#{value}"}
   end
-  find_field("sex").should be_checked
+  find_field("F").should be_checked
 end
+
 
 When /^(?:|I )fill in the following:$/ do |fields|
   fields.rows_hash.each do |name, value|
-    When %{I fill in "#{name}" with "#{value}"}
+    %{I fill in "#{name}" with "#{value}"}
   end
 end
 
@@ -116,11 +121,11 @@ When /^(?:|I )choose "([^"]*)"$/ do |field|
   choose(field)
 end
 
-When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
+When /^(?:|I )attach the file "([^"]*)" to "([^"]*)$/ do |path, field|
   attach_file(field, File.expand_path(path))
 end
 
-Then /^(?:|I )should see "([^"]*)"$/ do |text|
+Then /^(?:|I )should see (.+)$/ do |text|
   if page.respond_to? :should
     page.should have_content(text)
   else

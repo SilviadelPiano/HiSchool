@@ -1,0 +1,21 @@
+- content_for :nav_top do 
+  %br/
+  = render 'users/shared/logout'
+
+- content_for :left_col do 
+  = label_tag 'name', "Nome: " 
+  = label_tag 'u_name', "#{user.name}", :class => "my-label"
+  %br/
+  = label_tag 'surname', "Cognome: "
+  = label_tag 'u_surname', "#{user.surname}", :class => "my-label"
+  %br/
+  = label_tag 'email', "Email: "
+  = label_tag 'u_email', "#{user.email}", :class => "my-label"
+  %br/
+
+- content_for :center_col do 
+  %h1 Qui ci andrà il calendario
+
+- content_for :right_col do
+  %h1 Qui ci andranno i post
+  
