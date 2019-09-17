@@ -1,19 +1,18 @@
 Feature: SignUp
     As a User
     So that I can use the app's services
-    Bisogna aggiungere il supporto per la select per la data
 
         Scenario: 
             Given I am on the sign-up page
-            When I fill in the following:
-                | nome              | Silvia                      |
-                | cognome           | del Piano                   |
-                | codice fiscale    | DLPSLV97L67H501J            |
-                | città di nascita  | Roma                        |
-                | email             | silvia.delpiano27@gmail.com |
-                | password          | *YukiShiro27                |
-                | conferma password | *YukiShiro27                |
+            When I fill the form correctly
+                | user_name                  | Silvia                      |
+                | user_surname               | del Piano                   |
+                | user_CF                    | DLPSLV97L67H501J            |
+                | user_birth_place           | Roma                        |
+                | user_email                 | silvia.delpiano27@gmail.com |
+                | user_password              | *YukiShiro27                |
+                | user_password_confirmation | *YukiShiro27                |
                 And I click radio button user_sex_f
                 And I click radio button user_roles_student_student
                 And I press Registrati
-            Then I should see Hai quasi finito!
+            Then I should be on the new-class page

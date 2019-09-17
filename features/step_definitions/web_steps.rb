@@ -81,11 +81,11 @@ end
 # based on naming conventions.
 # 
 
-When /^I fill out the form correctly$/ do |table|
-  table.rows_hash.each do |name, value|
-    %{I fill in "#{name}" with "#{value}"}
+When /^I fill the form correctly$/ do |table|
+  puts table.rows_hash
+  criteria = table.rows_hash.each do |field, value|
+    fill_in field.to_sym, :with => value
   end
-  find_field("F").should be_checked
 end
 
 

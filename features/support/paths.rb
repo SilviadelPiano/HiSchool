@@ -23,10 +23,13 @@ module NavigationHelpers
       '/users/sign_in'
 
     when /^the new-class\s?page$/
-      '/home/school_class_new'
-    
-    when /^the users\s?page$/
-      '/users'
+      '/home/school_class_new/'
+
+    when /^the login\s?page$/
+      '/users/sign_in'
+
+    when /^the dashboard\s?page$/
+      '/dashboard'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
