@@ -1,0 +1,17 @@
+- content_for :nav_top do
+  %li
+    %a{:href => "/dashboard"}
+      %button#login-btn.btn.btn-lg.btn-success.navbar-btn Dashboard
+
+- content_for :center_col do 
+  %h2 Materie 
+
+  - @subjects.each do |subject| 
+    = link_to "#{subject.subject}", controller: "subjects", action: "show", id: subject.id 
+    %br/
+- content_for :right_col do 
+  %h2 Insegnanti 
+
+  - @profs.each do |prof|
+    = label_tag 'name', "#{prof.name} #{prof.surname}"
+    %br/

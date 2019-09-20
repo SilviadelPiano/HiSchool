@@ -1,0 +1,10 @@
+- content_for :nav_top do
+  %li
+    %a{:href => "/subjects"}
+      %button#login-btn.btn.btn-lg.btn-success.navbar-btn Materie
+  %li
+    %a{:href => "/dashboard"}
+      %button#login-btn.btn.btn-lg.btn-success.navbar-btn Dashboard
+
+- content_for :right_col do 
+  = @subject.subject

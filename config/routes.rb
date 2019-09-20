@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   post 'home/school_class_new' => 'home#create'
 
   get '/dashboard' => 'dashboard#get'
-
   get '/user' => "dashboard#get", :as => :user_root
+
+  get '/subjects' => 'subjects#index'
+  get '/subjects/:id' => 'subjects#show'
 
   root 'home#index'
 

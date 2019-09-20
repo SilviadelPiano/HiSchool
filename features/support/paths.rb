@@ -31,6 +31,9 @@ module NavigationHelpers
     when /^the dashboard\s?page$/
       '/dashboard'
 
+    when /^the materie\s?page$/
+      '/subjects'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

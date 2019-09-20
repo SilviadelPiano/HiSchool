@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20190906185236) do
 
   create_table "memberships", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "schoolClass_id"
+    t.integer "schoolClass_id"  #id of school_classes row 
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["schoolClass_id"], name: "index_memberships_on_schoolClass_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20190906185236) do
   end
 
   create_table "school_classes_teachers", id: false, force: :cascade do |t|
-    t.bigint "school_class_id"
+    t.bigint "school_class_id" #id of school_classes row 
     t.bigint "teacher_id"
     t.string "subject"
     t.index ["school_class_id"], name: "index_school_classes_teachers_on_school_class_id"

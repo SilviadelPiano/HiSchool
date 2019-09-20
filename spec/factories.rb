@@ -2,7 +2,7 @@ FactoryBot.define do
     factory :user do
         name { "Silvia" }
         surname { "del Piano" }
-        roles_mask { "2" }
+        roles_mask { "2" } #questo numero può essere uno qualsiasi
         CF { "DLPSLV97L67H501J" }
         birth_place { "Roma" }
         sex { "F" }

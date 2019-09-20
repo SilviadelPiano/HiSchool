@@ -63,6 +63,18 @@ def create_user
            })
 end
 
+def create_student
+  create_visitor
+  delete_user
+  @user = FactoryBot.create(:user, roles_mask: "2")
+  @school = FactoryBot.create(:school)
+  @schoolClass = FactoryBot.create(:schoolClass)
+  @member = Membership.create!({
+             :user_id => @user.id,
+             :schoolClass_id => "1"
+           })
+end
+
 def sign_in
   visit '/users/sign_in'
   fill_in "user_email", :with => @visitor[:email]
@@ -88,6 +100,11 @@ Given /^I am logged in$/ do
   create_user
   sign_in
 end
+
+Given /^I am logged in and a student$/ do 
+  create_student
+  sign_in
+end 
 
 Given /^a valid user$/ do
   @user = FactoryBot.create(:user)
