@@ -3,6 +3,13 @@ language: ruby
 rvm:
   - 2.4.1
 
-script: 
+env:
+  - DB=sqlite
+  - DB=mysql
+  - DB=postgresql
+script:
+  - bundle exec rake db:migrate --trace
   - bundle exec rake test_with_coveralls
+
+
 
