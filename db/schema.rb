@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190921075410) do
+ActiveRecord::Schema.define(version: 20190921134301) do
 
   create_table "children", force: :cascade do |t|
     t.integer "parent_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20190921075410) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

@@ -1,0 +1,40 @@
+- content_for :nav_top do 
+  %li
+    %a{:href => "/dashboard"}
+      %button.btn.btn-lg.btn-success.navbar-btn Dashboard
+
+- content_for :center_col do 
+  .container-fluid.my-container
+    = form_with model: @post, url: '/posts', method: :post do |f|
+      .field.form-group
+        = f.label :testo 
+        %br/
+        = f.text_area :description, autofocus: true, :class => 'form-control', required: true
+        %br/
+      .field.form-group 
+        = f.label :classe
+        %br/
+        = f.text_field :classroom, autofocus: true, :class => 'form-control', required: true
+        %br/
+      .field.form-group 
+        = f.label :scuola
+        %br/
+        = f.text_field :school, autofocus: true, :class => 'form-control', required: true
+        %br/
+      .field.form-group
+        = f.label :link_consegna
+        %br/
+        = f.text_field :submit_link, autofocus: true, autocomplete: "link", :class => 'form-control'
+        %br/
+      .field.form-group
+        = f.label :scadenza
+        %br/
+        = f.date_select :deadline, autofocus: true, discard_year: true
+        %br/
+        %br/
+      .actions
+        = f.submit "Pubblica", :class => 'btn btn-lg btn-success'
+      %br/
+      %br/
+
+      
