@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Security help
-gem 'devise'
+gem 'devise', '~> 4.7.1'
 gem 'canard', '~> 0.5.0.pre'
 
 # Use Capistrano for deployment
