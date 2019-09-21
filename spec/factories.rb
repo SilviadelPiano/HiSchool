@@ -19,5 +19,11 @@ FactoryBot.define do
         name { "2LS" }
         school_id { "1" }
     end
+
+    factory :school_class_teacher do 
+        school_class_id { "1" }
+        teacher_id { "1" }
+        subject { "Italiano" }
+    end 
     
   end

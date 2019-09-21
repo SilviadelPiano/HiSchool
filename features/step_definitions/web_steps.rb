@@ -31,57 +31,6 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
-# Useful methods
-
-def create_visitor
-  @visitor ||= { :name => "Silvia",
-                 :surname => "del Piano",
-                 :roles_mask => "2",
-                 :CF => "DLPSLV97L67H501J",
-                 :birth_place => "Roma",
-                 :sex => "F",
-                 :email => "silvia.delpiano27@gmail.com",
-                 :password => "*YukiShiro27",
-                 :password_confirmation => "*YukiShiro27" }
-end
-
-
-def delete_user
-  @user ||= User.where(:email => @visitor[:email]).first
-  @user.destroy unless @user.nil?
-end
-
-def create_user
-  create_visitor
-  delete_user
-  @user = FactoryBot.create(:user, @visitor)
-  @school = FactoryBot.create(:school)
-  @schoolClass = FactoryBot.create(:schoolClass)
-  @member = Membership.create!({
-             :user_id => @user.id,
-             :schoolClass_id => "1"
-           })
-end
-
-def create_student
-  create_visitor
-  delete_user
-  @user = FactoryBot.create(:user, roles_mask: "2")
-  @school = FactoryBot.create(:school)
-  @schoolClass = FactoryBot.create(:schoolClass)
-  @member = Membership.create!({
-             :user_id => @user.id,
-             :schoolClass_id => "1"
-           })
-end
-
-def sign_in
-  visit '/users/sign_in'
-  fill_in "user_email", :with => @visitor[:email]
-  fill_in "user_password", :with => @visitor[:password]
-  click_button "Log in"
-end
-
 # Single-line step scoper
 When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
@@ -94,26 +43,6 @@ end
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
-end
-
-Given /^I am logged in$/ do
-  create_user
-  sign_in
-end
-
-Given /^I am logged in and a student$/ do 
-  create_student
-  sign_in
-end 
-
-Given /^a valid user$/ do
-  @user = FactoryBot.create(:user)
-  @school = FactoryBot.create(:school)
-  @schoolClass = FactoryBot.create(:schoolClass)
-  @member = Membership.create!({
-             :user_id => @user.id,
-             :schoolClass_id => "1"
-           })
 end
 
 When /^(?:|I )go to (.+)$/ do |page_name|

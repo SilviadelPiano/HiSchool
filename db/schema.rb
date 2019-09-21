@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190906185236) do
+ActiveRecord::Schema.define(version: 20190921075410) do
 
   create_table "children", force: :cascade do |t|
     t.integer "parent_id"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20190906185236) do
 
   create_table "memberships", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "schoolClass_id"  #id of school_classes row 
+    t.integer "schoolClass_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["schoolClass_id"], name: "index_memberships_on_schoolClass_id"
@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 20190906185236) do
     t.index ["school_id"], name: "index_school_classes_on_school_id"
   end
 
-  create_table "school_classes_teachers", id: false, force: :cascade do |t|
-    t.bigint "school_class_id" #id of school_classes row 
-    t.bigint "teacher_id"
+  create_table "school_classes_teachers", force: :cascade do |t|
+    t.integer "school_class_id", limit: 8
+    t.integer "teacher_id", limit: 8
     t.string "subject"
     t.index ["school_class_id"], name: "index_school_classes_teachers_on_school_class_id"
     t.index ["teacher_id"], name: "index_school_classes_teachers_on_teacher_id"

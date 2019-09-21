@@ -34,6 +34,9 @@ module NavigationHelpers
     when /^the materie\s?page$/
       '/subjects'
 
+    when /^the teacher subject\s?page$/
+      '/subjects/1'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

@@ -21,6 +21,7 @@ class SubjectsController < ApplicationController
         end
 
         @subject = SchoolClassTeacher.find(params[:id])
+        @prof = User.find(@subject.teacher_id)
     end 
 
 end

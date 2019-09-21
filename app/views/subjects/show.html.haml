@@ -6,5 +6,26 @@
     %a{:href => "/dashboard"}
       %button#login-btn.btn.btn-lg.btn-success.navbar-btn Dashboard
 
-- content_for :right_col do 
-  = @subject.subject
+- content_for :left_col do 
+  %h1
+    = @subject.subject
+
+  Vediamo se qui riusciamo a mettere la foto, sennò pazienza 
+  %br/
+  = label_tag 'prof_name', "Nome prof: "
+  = label_tag 'u_prof_name', "#{@prof.name}", :class => "my-label"
+  %br/
+  = label_tag 'prof_surname', "Cognome prof: "
+  = label_tag 'u_prof_surname', "#{@prof.surname}", :class => "my-label"
+  %br/
+  = label_tag 'prof_email', "Email prof: "
+  = label_tag 'u_prof_email', "#{@prof.email}", :class => "my-label"
+
+  %h3 Materiale:
+
+  Qua ci andrà il materiale caricato su google drive
+
+- content_for :center_col do 
+  %h3 Post:
+
+  Qui ci andranno i 10 post più recenti fatti da questo prof per la classe dell'utente
