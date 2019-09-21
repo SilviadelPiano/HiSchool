@@ -5,6 +5,9 @@ require_relative 'config/application'
 
 Rails.application.load_tasks
 
-require 'coveralls/rake/task'
-Coveralls::RakeTask.new
-task :test_with_coveralls => [:spec, :features, 'coveralls:push']
+begin
+    require 'coveralls/rake/task'
+    Coveralls::RakeTask.new
+    task :test_with_coveralls => [:spec, :features, 'coveralls:push']
+rescue LoadError
+end
