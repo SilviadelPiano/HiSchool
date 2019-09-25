@@ -26,6 +26,4 @@
   Qua ci andrà il materiale caricato su google drive
 
 - content_for :center_col do 
-  %h3 Post:
-
-  Qui ci andranno i 10 post più recenti fatti da questo prof per la classe dell'utente
+  = render partial: "/dashboard/posts", locals: {posts: @posts}

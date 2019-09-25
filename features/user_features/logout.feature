@@ -4,6 +4,6 @@ Feature: Logout
 
         Scenario: 
             Given I am logged in 
-                And I am on the dashboard page
+            And I am on the dashboard page
             When I follow Logout
             Then I should be on the home page

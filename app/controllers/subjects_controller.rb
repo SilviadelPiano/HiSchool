@@ -22,6 +22,7 @@ class SubjectsController < ApplicationController
 
         @subject = SchoolClassTeacher.find(params[:id])
         @prof = User.find(@subject.teacher_id)
+        @posts = Post.where(user_id: @prof.id, school_class_id: @subject.school_class_id).limit(5)
     end 
 
 end

@@ -14,3 +14,9 @@ Feature: Go to the "Dashboard_*" page
         And I am on the teacher subject page
         When I follow Dashboard
         Then I should be on the dashboard page
+
+    Scenario:
+        Given I am logged in and a teacher 
+        And I am on the new post page
+        When I follow Dashboard
+        Then I should be on the dashboard page

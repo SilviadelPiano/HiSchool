@@ -9,7 +9,7 @@
 - content_for :left_col do 
   %h2 Foto da Google Account 
   
-= render partial: "common", locals: {user: @c_user}
+= render partial: "common", locals: {user: @c_user, posts: @posts}
 
 - content_for :left_col do 
   %h3 Materiale:

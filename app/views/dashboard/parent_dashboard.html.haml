@@ -1,4 +1,4 @@
-= render partial: "common", locals: {user: @c_user}
+= render partial: "common", locals: {user: @c_user, posts: @posts}
 
 - content_for :left_col do 
   = label_tag 'son_name', "Genitore di: "

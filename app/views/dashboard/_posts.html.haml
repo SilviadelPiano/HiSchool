@@ -1,0 +1,18 @@
+%br/
+.container.panel.panel-primary.panel-body.tab-content.tab-pane.active.my-container 
+  - for p in posts do 
+    = label_tag 'p_desc', "#{p.description}"
+    %br/
+    = label_tag 'p_created', "#{p.created_at}", :class => "my-label" 
+    %br/
+    - if p.link.present?
+      = label_tag 'post_link', "Link per la consegna"
+      %br/
+      = label_tag 'p_link', "#{p.link}", :class => "my-label" # per ora
+      %br/
+      = label_tag 'post_deadline', "Entro: "
+      %br/
+      = label_tag 'p_deadline', "#{p.deadline}", :class => "my-label" # per ora
+      %br/
+    
+    

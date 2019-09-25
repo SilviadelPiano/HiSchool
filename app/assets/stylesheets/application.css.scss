@@ -22,7 +22,13 @@
 
  .my-label{
   font-weight: 400;
-}
+ }
+
+ .my-container{
+   height: 200px;   // all'occorrenza si può aumentare
+   width: 500px;
+   border-color: aquamarine;
+ }
 
  select{
    background-color: #d6ffe1;

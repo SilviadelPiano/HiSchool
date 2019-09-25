@@ -15,6 +15,6 @@
 - content_for :center_col do 
   %h1 Qui ci andrà il calendario
 
-- content_for :right_col do
-  %h1 Qui ci andranno i post
+- content_for :right_col do 
+  = render partial: "posts", locals: {posts: @posts}
   

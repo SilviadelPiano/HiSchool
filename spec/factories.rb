@@ -25,5 +25,13 @@ FactoryBot.define do
         teacher_id { "1" }
         subject { "Italiano" }
     end 
+
+    factory :post do 
+        link { "" }
+        deadline { "" }
+        user_id { "" }
+        description { "[Italiano, 2LS, Peano] Studiate italiano!\nSilvia" }
+        school_class_id { "1" }
+    end
     
   end

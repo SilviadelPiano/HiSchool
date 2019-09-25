@@ -5,35 +5,35 @@
 
 - content_for :center_col do 
   .container-fluid.my-container
-    = form_with model: @post, url: '/posts', method: :post do |f|
+    = form_with(url: '/posts', method: "post") do 
       .field.form-group
-        = f.label :testo 
+        = label_tag("Testo") 
         %br/
-        = f.text_area :description, autofocus: true, :class => 'form-control', required: true
+        = text_area_tag(:description, nil, autofocus: true, class: 'form-control', required: true, :maxlength => "100")
         %br/
       .field.form-group 
-        = f.label :classe
+        = label_tag("Classe")
         %br/
-        = f.text_field :classroom, autofocus: true, :class => 'form-control', required: true
+        %input#post_school_class{ :name => 'school_class', :autofocus => true, autocomplete: "classe", :class => "form-control", required: true, :maxlength => "30" }
         %br/
       .field.form-group 
-        = f.label :scuola
+        = label_tag("Scuola")
         %br/
-        = f.text_field :school, autofocus: true, :class => 'form-control', required: true
-        %br/
-      .field.form-group
-        = f.label :link_consegna
-        %br/
-        = f.text_field :submit_link, autofocus: true, autocomplete: "link", :class => 'form-control'
+        %input#post_school{ :name => 'school', :autofocus => true, autocomplete: "materia", :class => "form-control", required: true, :maxlength => "30" }
         %br/
       .field.form-group
-        = f.label :scadenza
+        = label_tag("Link consegna")
         %br/
-        = f.date_select :deadline, autofocus: true, discard_year: true
+        %input{ :name => 'submit_link', :autofocus => true, autocomplete: "materia", :class => "form-control", :maxlength => "30" }
+        %br/
+      .field.form-group
+        = label_tag("Scadenza")
+        %br/
+        = date_field(:deadline, nil, autofocus: true, min: Date.today, :class => "form-control")
         %br/
         %br/
       .actions
-        = f.submit "Pubblica", :class => 'btn btn-lg btn-success'
+        = submit_tag("Pubblica", :class => 'btn btn-lg btn-success')
       %br/
       %br/
 
