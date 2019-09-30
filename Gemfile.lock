@@ -264,6 +264,8 @@ GEM
     sassc (2.2.0)
       ffi (~> 1.9)
     shellany (0.0.1)
+    simple_calendar (2.3.0)
+      rails (>= 3.0)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -336,6 +338,7 @@ DEPENDENCIES
   rails_12factor
   rspec-rails
   sass-rails (~> 5.0)
+  simple_calendar (~> 2.0)
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)

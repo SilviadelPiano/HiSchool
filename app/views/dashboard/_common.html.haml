@@ -12,8 +12,13 @@
   = label_tag 'u_email', "#{user.email}", :class => "my-label"
   %br/
 
-- content_for :center_col do 
-  %h1 Qui ci andrà il calendario
+- content_for :center_col do
+  #calendar-container.container-fluid
+    = month_calendar events: @posts do |date, post|
+      = date.day
+      - post.each do |p|
+        %div
+          '#{p.description}'
 
 - content_for :right_col do 
   = render partial: "posts", locals: {posts: @posts}

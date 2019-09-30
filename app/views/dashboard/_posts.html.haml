@@ -1,5 +1,5 @@
 %br/
-.container.panel.panel-primary.panel-body.tab-content.tab-pane.active.my-container 
+.my-container.container.panel.panel-primary.panel-body.tab-content.tab-pane.active
   - for p in posts do 
     = label_tag 'p_desc', "#{p.description}"
     %br/
@@ -14,5 +14,6 @@
       %br/
       = label_tag 'p_deadline', "#{p.deadline}", :class => "my-label" # per ora
       %br/
-    
+    %br/
+    %br/
     

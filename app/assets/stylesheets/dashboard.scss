@@ -1,0 +1,36 @@
+
+#calendar-container{
+    padding-top: 30px;
+}
+
+.simple-calendar{
+    .calendar-heading{
+        font-size: large;
+        margin-bottom: 10px;
+    }
+
+    a{
+        color: #5cb85c;
+    }
+
+    .current-month{
+        background-color: #d4ffdf;
+    }
+
+    .prev-month{
+        background-color: floralwhite;
+    }
+
+    .next-month{
+        background-color: floralwhite;
+    }
+
+    .today{
+        background-color: greenyellow;
+    }
+
+    .has-events{
+        background-color: rgb(255, 229, 83);;
+    }
+
+}

@@ -4,7 +4,7 @@
       %button.btn.btn-lg.btn-success.navbar-btn Dashboard
 
 - content_for :center_col do 
-  .container-fluid.my-container
+  .container-fluid
     = form_with(url: '/posts', method: "post") do 
       .field.form-group
         = label_tag("Testo") 
