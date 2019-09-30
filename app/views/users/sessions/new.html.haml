@@ -26,5 +26,5 @@
     .actions
       = f.submit "Log in", :class => 'btn btn-lg btn-success'
 - content_for :right_col do
-  %h2 Qui ci andrà il login con OAuth (google) 
+  = link_to "Login con Google", user_google_oauth2_omniauth_authorize_path
   //= render "users/shared/links"
