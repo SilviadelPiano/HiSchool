@@ -26,5 +26,5 @@
     .actions
       = f.submit "Log in", :class => 'btn btn-lg btn-success'
 - content_for :right_col do
-  = link_to "Login con Google", user_google_oauth2_omniauth_authorize_path
+  = link_to "Login con Google", user_google_oauth2_omniauth_authorize_path, :class => "button btn btn-lg btn-success google-btn"
   //= render "users/shared/links"

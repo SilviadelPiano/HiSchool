@@ -13,7 +13,8 @@
 
 - content_for :left_col do 
   %h3 Materiale:
-  Qua bisognerà mettere l'elenco dei file caricati su Google Drive
+  - @files.items.each do |file|
+    = label_tag 'g_file', "#{file.title}"
 
 - content_for :nav_bottom do 
   %li
