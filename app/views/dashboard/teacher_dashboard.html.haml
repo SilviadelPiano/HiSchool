@@ -1,13 +1,7 @@
 - content_for :nav_top do 
   %li
-    %a{:href => "#"}  
-      %button.btn.btn-lg.btn-success.navbar-btn Compiti Consegnati
-  %li
     %a{:href => "/posts/new"}
       %button.btn.btn-lg.btn-success.navbar-btn Nuovo Post
- 
-- content_for :left_col do 
-  %h2 Foto da Google Account 
   
 = render partial: "common", locals: {user: @c_user, posts: @posts}
 
@@ -15,11 +9,7 @@
   %h3 Materiale:
   - @files.items.each do |file|
     = label_tag 'g_file', "#{file.title}"
+    = link_to "Cancella", controller: "dashboard", action: "delete_file", file: file.id 
+    = link_to "Download", controller: "dashboard", action: "download_file", file: file.id
+    %br/
 
-- content_for :nav_bottom do 
-  %li
-    %a{:href => "#"}  
-      %button.btn.btn-lg.btn-success.navbar-btn Aggiungi File
-  %li
-    %a{:href => "#"}  
-      %button.btn.btn-lg.btn-success.navbar-btn Rimuovi/Download File

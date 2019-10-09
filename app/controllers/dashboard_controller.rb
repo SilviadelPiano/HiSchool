@@ -22,19 +22,12 @@ class DashboardController < ApplicationController
             @posts = Post.where(school_class_id: @school_class.id).limit(10) 
             render 'student_dashboard'
         else 
-            require 'google/apis/drive_v2'
-
-            scopes = 'https://www.googleapis.com/auth/drive'
-            authorization = Google::Auth.get_application_default(scopes)
-            #Drive = Google::Apis::DriveV2 # Alias the module
-            drive = Google::Apis::DriveV2::DriveService.new
-            drive.authorization = authorization
 
             #metadata = Google::Apis::DriveV2::File.new(title: 'My document')
-            #metadata = drive.insert_file(metadata, upload_source: 'app/assets/test.txt', content_type: 'text/plain')
+            #metadata = drive.insert_file(metadata, upload_source: 'app/assets/files/test.txt', content_type: 'text/plain')
 
             # Search for files in Drive (first page only)   
-            @files = drive.list_files
+            @files = @drive.list_files
             #files.items.each do |file|
             #puts file.title
             #end
@@ -42,6 +35,17 @@ class DashboardController < ApplicationController
             @posts = Post.joins("INNER JOIN school_classes_teachers ON school_classes_teachers.school_class_id = posts.school_class_id").where("school_classes_teachers.teacher_id" => @c_user.id).limit(10)
             render 'teacher_dashboard'
         end
+    end
+
+    def delete_file
+        file_id = params[:file]
+        @drive.delete_file(file_id)
+        redirect_to '/dashboard'
+    end
+
+    def download_file
+        d_file
+        redirect_to '/dashboard'
     end
         
 end

@@ -3,8 +3,24 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
+  before_action :google_set_up
 
   #after_action :pass_params, if: :devise_controller?
+
+  def google_set_up
+    require 'google/apis/drive_v2'
+
+    scopes = 'https://www.googleapis.com/auth/drive'
+    authorization = Google::Auth.get_application_default(scopes)
+    #Drive = Google::Apis::DriveV2 # Alias the module
+    @drive = Google::Apis::DriveV2::DriveService.new
+    @drive.authorization = authorization
+  end
+
+  def d_file
+    file_id = params[:file]
+    @drive.get_file(file_id, download_dest: 'tmp/test_ita.txt')
+  end
 
   protected
 

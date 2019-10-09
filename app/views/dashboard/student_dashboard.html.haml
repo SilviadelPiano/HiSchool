@@ -3,9 +3,6 @@
     %a{:href => "/subjects"}  
       %button.btn.btn-lg.btn-success.navbar-btn Materie
 
-- content_for :left_col do 
-  %h2 Qui ci sarà la foto dal Google Account
-
 = render partial: "common", locals: {user: @c_user, posts: @posts}
 
 - content_for :left_col do 

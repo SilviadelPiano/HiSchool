@@ -8,9 +8,7 @@
 
 - content_for :left_col do 
   %h1
-    = @subject.subject
-
-  Vediamo se qui riusciamo a mettere la foto, sennò pazienza 
+    = @subject.subject 
   %br/
   = label_tag 'prof_name', "Nome prof: "
   = label_tag 'u_prof_name', "#{@prof.name}", :class => "my-label"
@@ -22,8 +20,11 @@
   = label_tag 'u_prof_email', "#{@prof.email}", :class => "my-label"
 
   %h3 Materiale:
-
-  Qua ci andrà il materiale caricato su google drive
+  - @files.items.each do |file|
+    //%a{:href => "/subjects/:id/download_file"}
+    //= link_to "#{file.title}", "/subjects/download_file", action: :view_file
+    = link_to "#{file.title}", controller: "subjects", action: "view_file", file: file.id
+    %br/
 
 - content_for :center_col do 
   = render partial: "/dashboard/posts", locals: {posts: @posts}

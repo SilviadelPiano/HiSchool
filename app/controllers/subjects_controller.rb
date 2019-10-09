@@ -23,6 +23,35 @@ class SubjectsController < ApplicationController
         @subject = SchoolClassTeacher.find(params[:id])
         @prof = User.find(@subject.teacher_id)
         @posts = Post.where(user_id: @prof.id, school_class_id: @subject.school_class_id).limit(5)
+
+        # UPDATE
+        #metadata = Google::Apis::DriveV2::File.new(title: 'Italiano_appunti')
+        #metadata = @drive.insert_file(metadata, upload_source: 'app/assets/files/Italiano1.txt', content_type: 'text/plain')
+
+        #metadata = Google::Apis::DriveV2::File.new(title: 'Italiano_slides')
+        #metadata = @drive.insert_file(metadata, upload_source: 'app/assets/files/Italiano1.txt', content_type: 'text/plain')
+        
+        @files = @drive.list_files(q: "title contains 'Italiano'")
+        
+        # DELETE
+        #@files.items.each do |file|
+         #   @drive.delete_file(file.id)
+        #end
     end 
+
+    def view_file
+
+        #file_id = params[:file]
+        subject_id = params[:id]
+        #puts file_id
+        #@files = @drive.list_files(q: "title contains 'Italiano'")
+        #puts "STARTED DOWNLOAD"
+        #@drive.get_file(file_id, download_dest: 'tmp/test_ita.txt')
+        #puts "END DOWNLOAD"
+        d_file
+        # redirect_to 'subjects'+subject_id exposes the application to redirect attack
+        redirect_to controller: 'subjects', action: 'show', id: subject_id  #redirect in a secure way
+
+    end
 
 end
