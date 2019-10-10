@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations", :omniauth_callbacks => 'omniauth_callbacks'}
-  
   get 'home/index'
 
   get 'home/school_class_new' => 'home#school_class_new'

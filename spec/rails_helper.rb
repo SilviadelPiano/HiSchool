@@ -1,4 +1,6 @@
 require 'coveralls/rake/task'
+require 'coveralls'
+require 'factory_Bot.rb'
 Coveralls.wear_merged!('rails')
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
@@ -60,4 +62,20 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # OAuth test
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+      :provider => "google_oauth2",
+      :uid => "123456789",
+      :info => {
+        :name => "Clara Schiaccianoci",
+        :email => "clara@gmail.com"
+      },
+      :credentials => {
+        :token => "token",
+        :refresh_token => "refresh token"
+      }
+    }
+  )
 end
