@@ -18,8 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   def d_file
-    file_id = params[:file]
-    @drive.get_file(file_id, download_dest: 'tmp/test_ita.txt')
+    file_id = params[:file_id]
+    @file_name = params[:file_name]
+    @drive.get_file(file_id, download_dest: '/home/biar/Downloads/'+@file_name)
   end
 
   protected

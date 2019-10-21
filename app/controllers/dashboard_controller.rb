@@ -37,14 +37,27 @@ class DashboardController < ApplicationController
         end
     end
 
+    def upload_file
+        @new_file_name = params[:g_file_title]
+        @new_file_source = params[:g_file_path]
+
+        metadata = Google::Apis::DriveV2::File.new(title: @new_file_name)
+        metadata = @drive.insert_file(metadata, upload_source: "#{@new_file_source}", content_type: 'text/plain')
+        flash[:notice] = "Caricamento effettuato!"
+        redirect_to '/dashboard'
+
+    end
+
     def delete_file
         file_id = params[:file]
         @drive.delete_file(file_id)
+        flash[:notice] = "Il file è stato cancellato con successo!"
         redirect_to '/dashboard'
     end
 
     def download_file
         d_file
+        flash[:notice] = "Download effettuato!"
         redirect_to '/dashboard'
     end
         

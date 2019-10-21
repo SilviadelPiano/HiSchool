@@ -7,7 +7,7 @@ RSpec.feature "user_logs_in" do
         Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google]
          #request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:google]
 
-         @user1 = create(:user, name: "Clara", 
+        @user1 = create(:user, name: "Clara", 
                                 surname: "Schiaccianoci", 
                                 CF: "SCHCLR80B53H501B", 
                                 email: "clara@gmail.com",

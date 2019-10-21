@@ -8,8 +8,28 @@
 - content_for :left_col do 
   %h3 Materiale:
   - @files.items.each do |file|
-    = label_tag 'g_file', "#{file.title}"
+    = label_tag "g_file_#{file.title}", "#{file.title}"
     = link_to "Cancella", controller: "dashboard", action: "delete_file", file: file.id 
-    = link_to "Download", controller: "dashboard", action: "download_file", file: file.id
+    = link_to "Download", controller: "dashboard", action: "download_file", file_id: file.id, file_name: file.title
     %br/
 
+  %br/
+  %br/
+  - if flash[:notice]
+    .notice= flash[:notice]
+
+- content_for :right_col do 
+  .container-fluid
+    = form_with(url: '/dashboard', method: "post") do 
+      .field.form-group
+        = label_tag("Titolo con cui verrà salvato il file (si prega di scrivere all'inizio la materia corrispondente, la prima lettere deve essere maiuscola);")
+        %br/
+        %input#g_file_title{ :name => 'g_file_title', :autofocus => true, autocomplete: "titolo", :class => "form-control", required: true, :maxlength => "30" }
+        %br/ 
+      .field.form-group 
+        = label_tag("Cartella di origine (si prega di scrivere il percorso completo del file, compreso il suo nome):")
+        %br/
+        %input#g_file_path{ :name => 'g_file_path', :autofocus => true, autocomplete: "percorso", :class => "form-control", required: true, :maxlength => "30" }
+        %br/
+      .actions
+        = submit_tag("Carica il file", :class => 'btn btn-lg btn-success')

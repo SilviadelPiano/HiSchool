@@ -61,6 +61,11 @@ When /^(?:|I )follow (.+)$/ do |link|
   click_link(link)
 end
 
+When /^(?:|I )click the link (.+)$/ do |link|
+  first(:link, link).click
+  #click_link(link)
+end
+
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end

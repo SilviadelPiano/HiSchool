@@ -5,7 +5,16 @@
   %li
     %a{:href => "users/sign_up"}
       %button.btn.btn-lg.btn-success.navbar-btn Registrati
+- content_for :left_col do
+  %h1 Benvenuto su HiSchool!
+  %h2 La nostra piattaforma di permette di sfruttare vari servizi a seconda del tuo ruolo nel contesto scolastico:
 - content_for :center_col do
-  %h2 Home page. Work in progress!
+  %h3 - Genitore: Potrai vedere gli avvisi inoltrati alla classe di tuo figlio con il relativo calendario, per avere un'idea delle attività da lui svolte.
+  %h3 - Studente: Potrai vedere nella Dashboard le comunicazioni degli insegnati per te, ed inoltre avrai a disposizione una pagina dedicata per ogni materia con il materile su cui studiare!
+- content_for :right_col do
+  %h3 - Insegnante: Comunica direttamete con la classe a cui insegni tramite i Post, e ispeziona il materiale su cui studiano i tuoi alunni (potrai eliminare ciò che non riterrai opportuno).
+  %br/
+  %h2 Speriamo vivamente che i nostri servizi possano esservi utili, felice anno scolastico!
+  %h2   Gli sviluppatori
 //- content_for :nav_bottom do
 //%button.btn.btn-lg.btn-success.navbar-btn.navbar-rigth{:href => "#"} Contact Us

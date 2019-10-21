@@ -22,12 +22,12 @@
         %input#post_school{ :name => 'school', :autofocus => true, autocomplete: "materia", :class => "form-control", required: true, :maxlength => "30" }
         %br/
       .field.form-group
-        = label_tag("Link consegna")
+        = label_tag("Link consegna (facoltativo)")
         %br/
         %input{ :name => 'submit_link', :autofocus => true, autocomplete: "materia", :class => "form-control", :maxlength => "30" }
         %br/
       .field.form-group
-        = label_tag("Scadenza")
+        = label_tag("Scadenza (facoltativo)")
         %br/
         = date_field(:deadline, nil, autofocus: true, min: Date.today, :class => "form-control")
         %br/

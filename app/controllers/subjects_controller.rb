@@ -31,7 +31,7 @@ class SubjectsController < ApplicationController
         #metadata = Google::Apis::DriveV2::File.new(title: 'Italiano_slides')
         #metadata = @drive.insert_file(metadata, upload_source: 'app/assets/files/Italiano1.txt', content_type: 'text/plain')
         
-        @files = @drive.list_files(q: "title contains 'Italiano'")
+        @files = @drive.list_files(q: "title contains '#{@subject.subject}'")
         
         # DELETE
         #@files.items.each do |file|
@@ -49,6 +49,7 @@ class SubjectsController < ApplicationController
         #@drive.get_file(file_id, download_dest: 'tmp/test_ita.txt')
         #puts "END DOWNLOAD"
         d_file
+        flash[:notice] = "Download effettuato!"
         # redirect_to 'subjects'+subject_id exposes the application to redirect attack
         redirect_to controller: 'subjects', action: 'show', id: subject_id  #redirect in a secure way
 

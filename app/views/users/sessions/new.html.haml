@@ -3,11 +3,7 @@
     %a{:href => "/"}
       %button.btn.btn-lg.btn-success.navbar-btn Home
 - content_for :left_col do 
-  %h3 Questa è la pagina di login. 
-  %h3 Studenti e insegnanti:
-  %h4 siete pregati di effettuare il login con Google per poter sfruttare le funzionalità di Drive, che stanno alla base del sistema per gestire i file. Potete comunque fare l'accesso con le credenziali create alla registrazione, ma non è garantito il funzionamento di tutti i servizi.
-  %h3 Genitori:
-  %h4 Voi potete effettuare il login con le credenziali create alla registrazione.
+  %h3 Questa è la pagina di login, dalla quale potrete accedere a tutti i servizi una volta registrati!
 - content_for :center_col do
   %h2 Log in
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|

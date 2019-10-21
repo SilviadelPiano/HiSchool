@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboard#get'
   get '/dashboard/delete_file' => 'dashboard#delete_file'
   get '/dashbard/download_file' => 'dashboard#download_file'
+  post '/dashboard' => 'dashboard#upload_file'
 
   get '/user' => "dashboard#get", :as => :user_root
 

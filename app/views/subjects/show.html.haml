@@ -23,8 +23,14 @@
   - @files.items.each do |file|
     //%a{:href => "/subjects/:id/download_file"}
     //= link_to "#{file.title}", "/subjects/download_file", action: :view_file
-    = link_to "#{file.title}", controller: "subjects", action: "view_file", file: file.id
+    = link_to "#{file.title}", controller: "subjects", action: "view_file", file_id: file.id, file_name: file.title
     %br/
+  %br/
+  %br/
+  - if flash[:notice]
+    .notice= flash[:notice]
 
 - content_for :center_col do 
   = render partial: "/dashboard/posts", locals: {posts: @posts}
+
+
