@@ -61,6 +61,8 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # To do UML diagrams 
+  gem 'railroady'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
   gem 'coveralls', :require => false # to use Coveralls.io for test coverage
