@@ -2,4 +2,5 @@
 
 [![Build Status](https://travis-ci.org/SilviadelPiano/HiSchool.svg?branch=master)](https://travis-ci.org/SilviadelPiano/HiSchool) 
 
-All the basic information about this project can be found in the PDF file.
+Dear reader,
+this repository contains the code of the project developed for my bachelor degree thesis.
